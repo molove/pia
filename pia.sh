@@ -586,36 +586,6 @@ CREDS=0
 						# Check if user is root.
 if [ $(id -u) != 0 ];then echo "$ERROR Script must be run as root." && exit 1;fi
 
-						# Check for missing dependencies and install.
-if [ $(command -v pacman) ];then
-	INSTALLCMD="pacman --noconfirm -S"
-elif [ $(command -v apt-get) ];then
-	INSTALLCMD="apt-get install -y"
-elif [ $(command -v yum) ];then
-	INSTALLCMD="yum install -y"
-else
-	UNKNOWNOS=1
-fi
-
-if [ $UNKNOWNOS -eq 1 ];then
-	command -v openvpn >/dev/null 2>&1 || MISSINGDEP=1
-	command -v openssl >/dev/null 2>&1 || MISSINGDEP=1
-	command -v iptables >/dev/null 2>&1 || MISSINGDEP=1
-	command -v curl >/dev/null 2>&1 || MISSINGDEP=1
-	command -v unzip >/dev/null 2>&1 || MISSINGDEP=1
-	if [ $MISSINGDEP -eq 1 ];then
-		echo "$ERROR OS not identified as arch or debian based, please install openvpn, openssl, iptables, curl and unzip and run script again."
-		exit 1
-	fi
-else
-	command -v openvpn >/dev/null 2>&1 || { echo >&2 "$INFO openvpn required, installing...";$INSTALLCMD openvpn; }
-	command -v openssl >/dev/null 2>&1 || { echo >&2 "$INFO openssl required, installing...";$INSTALLCMD openssl; }
-	command -v iptables >/dev/null 2>&1 || { echo >&2 "$INFO iptables required, installing...";$INSTALLCMD iptables; }
-	command -v curl >/dev/null 2>&1 || { echo >&2 "$INFO curl required, installing...";$INSTALLCMD curl; }
-	command -v unzip >/dev/null 2>&1 || { echo >&2 "$INFO unzip required, installing...";$INSTALLCMD unzip; }
-fi
-
-
 if [ ! -d $VPNPATH ];then mkdir -p $VPNPATH;fi
 
 						# Check for existence of credentials file.
