@@ -38,19 +38,25 @@ Dependencies:
 - unzip
 - git
 
+
 Installation:
 ==========
-Clone the repository to a suitable place:  
-`cd ~/scripts && git clone https://github.com/d4rkcat/pia`
+This is for Debian based distro.
 
-Then to install the script:  
-`cd ~/scripts/pia && sudo make install`
+Clone the repository to a suitable place:  
+
+	mkdir pia
+	git clone https://github.com/taigasan/pia pia
+
+Then to install the script:
+
+	cd pia
+	./install.sh
 
 pia will now be installed and can be run from any directory with:  
-`sudo pia [options]`
 
-You can update to the latest version easily with:  
-`cd ~/scripts/pia && git pull && sudo make install`
+	sudo pia [options]
+
 
 Usage:
 ==========
