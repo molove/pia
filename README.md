@@ -28,34 +28,75 @@ The credentials file is permissions protected by 'chmod 400', which means only t
 The ovpn files are editited and 'auth-nocache' option is added, which means openvpn will not store your creds in memory.  
 
 
-Dependencies:
-==========
-- bash
-- iptables
-- openvpn
-- openssl
-- curl
-- unzip
-- git
+
+APT Installation:
+=================
+ you can install pia-vpn-client directly from my Launchpad PPA
+	# add to APT sources-list
+	sudo add-apt-repository ppa:taigasan/ppa
+
+	# or manually, in /etc/apt/sources.list
+	sudo apt edit-sources
+	# add this line
+	deb http://ppa.launchpad.net/taigasan/ppa/ubuntu eoan main
+
+	# if you want to remove it
+	sudo add-apt-repository --remove ppa:taigasan/ppa
+	# or remove the line from /etc/apt/sources.list
+
+ add PPA key to APT keyring, unless APT secure won't allowed to update from the PPA.
+	#  you need gnupg
+	sudo apt install gnupg
+	# download key from keyserver
+	sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 90B3FC4D4909D303
+
+ install pia-vpn-client
+	# refresh apt-cache with new repository
+	apt update
+	apt install pia-vpn-client
+
+ if everything goes well:
+	sudo pia
 
 
-Installation:
-==========
-This is for Debian based distro.
 
-Clone the repository to a suitable place:  
+Manual Installation:
+====================
+ install dependencies:
+	# be sure to install the last versions
+	sudo apt-get update
+	apt-get install openvpn openssl iptables curl unzip
 
+ make a place for files:
 	mkdir pia
-	git clone https://github.com/taigasan/pia pia
+	cd  pia
 
-Then to install the script:
+ clone the repository:  
+	# you need git package
+	sudo apt-get install git
+	# clone
+	git clone https://github.com/taigasan/pia .
 
-	cd pia
-	./install.sh
+ or download as zip:
+	# you need wget and unzip packages
+	sudo apt-get install wget unzip
+	# download archive
+	wget https://github.com/taigasan/pia/archive/master.zip -O pia.zip
+	# extract
+	unzip pia.zip
 
-pia will now be installed and can be run from any directory with:  
+ install:
+	make install
 
-	sudo pia [options]
+ uninstallation:
+	# keep config files
+	make remove
+	# remove config files
+	make purge
+
+ pia will now be installed and can be run from any directory with:  
+	sudo pia
+
 
 
 Usage:
@@ -77,5 +118,14 @@ Usage:
 	-h	- Display this help.
 
 	Examples: 
-	pia -dps 6  	- Change DNS, forward a port and connect to CA_Montreal.
-	pia -nfv	- Forward a new port, run firewall and be verbose.
+	pia -dps 6    - Change DNS, forward a port and connect to CA_Montreal.
+	pia -nfv      - Forward a new port, run firewall and be verbose.
+
+
+
+Troubleshootings:
+=================
+For questions, help, demands, requests or give me advices, mail me at <taigasan@sdf.org>.
+
+have a nice week-end..
+and don't forget to rock'n roll !!
