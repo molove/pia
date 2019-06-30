@@ -8,3 +8,6 @@ install:
 
 remove:
 	rm $(BIN)/pia
+
+purge: remove
+	rm -r /etc/openvpn/pia
