@@ -31,7 +31,8 @@ The ovpn files are editited and 'auth-nocache' option is added, which means open
 
 APT Installation:
 =================
- you can install pia-vpn-client directly from my Launchpad PPA
+you can install pia-vpn-client directly from my Launchpad PPA
+
 	# add to APT sources-list
 	sudo add-apt-repository ppa:taigasan/ppa
 
@@ -44,40 +45,47 @@ APT Installation:
 	sudo add-apt-repository --remove ppa:taigasan/ppa
 	# or remove the line from /etc/apt/sources.list
 
- add PPA key to APT keyring, unless APT secure won't allowed to update from the PPA.
+add PPA key to APT keyring, unless APT secure won't allowed to update from the PPA
+
 	#  you need gnupg
 	sudo apt install gnupg
 	# download key from keyserver
 	sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 90B3FC4D4909D303
 
- install pia-vpn-client
+install pia-vpn-client
+
 	# refresh apt-cache with new repository
 	apt update
 	apt install pia-vpn-client
 
- if everything goes well:
+if everything goes well
+
 	sudo pia
 
 
 
 Manual Installation:
 ====================
- install dependencies:
+install dependencies
+
 	# be sure to install the last versions
 	sudo apt-get update
 	apt-get install openvpn openssl iptables curl unzip
 
- make a place for files:
+make a place for files
+
 	mkdir pia
 	cd  pia
 
- clone the repository:  
+clone the repository
+
 	# you need git package
 	sudo apt-get install git
 	# clone
 	git clone https://github.com/taigasan/pia .
 
- or download as zip:
+or download as zip
+
 	# you need wget and unzip packages
 	sudo apt-get install wget unzip
 	# download archive
@@ -85,16 +93,19 @@ Manual Installation:
 	# extract
 	unzip pia.zip
 
- install:
+install
+
 	make install
 
- uninstallation:
+uninstallation
+
 	# keep config files
 	make remove
 	# remove config files
 	make purge
 
- pia will now be installed and can be run from any directory with:  
+pia will now be installed and can be run from any directory with
+
 	sudo pia
 
 
