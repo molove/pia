@@ -559,7 +559,7 @@ ERROR=" [$BOLD$RED"'X'"$RESET]"
 PROMPT=" [$BOLD$BLUE>$RESET]"
 
 						# This is where we will store PIA openVPN files and user config.
-VPNPATH='/etc/openvpn/pia'
+VPNPATH='/etc/pia'
 
 						# Initialize switches.
 PORTFORWARD=0
